@@ -1,1 +1,38 @@
-"A little Text"
+class MyGen():
+    current = 0
+    def __init__(self, first, last):
+        self.first = first
+        self.last = last
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if MyGen.current < self.last:
+            num = MyGen.current
+            MyGen.current += 1
+            return num
+        raise StopIteration
+    
+gen = MyGen(0,50)
+
+class MyGen2():
+    current=0
+    def __init__(self, begin, end):
+        self.begin = begin
+        self.end = end
+    
+    def __iter__(self):
+        self.a = 1
+        return self
+    def __next__(self):
+        if MyGen2.current<self.end:
+            num = MyGen2.current
+            MyGen2.current += 1
+            return num
+        raise StopIteration
+
+gener = MyGen2(0, 26)
+
+for i in gener:
+    print(i)
